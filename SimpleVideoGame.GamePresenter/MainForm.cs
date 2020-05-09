@@ -8,8 +8,7 @@ namespace SimpleVideoGame.GamePresenter
 {
     public partial class MainForm : Form
     {
-        private List<SceneObject> SceneObjects = new List<SceneObject>();
-        private Task SceneDrawingTask;
+        private GameEngine GameEngine;
 
         public MainForm()
         {
@@ -18,39 +17,24 @@ namespace SimpleVideoGame.GamePresenter
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            InitScene();
+            GameEngine = new GameEngine(Size.Width, Size.Height);
+            GameEngine.Init();
+            GameEngine.OnDrawFrame += DrawFrame;
         }
 
-        private void StartGameEngine()
+        private void DrawFrame(object sender, DrawFrameEventArgs e)
         {
-            SceneDrawingTask = new Task(RunGameEngine);
-            SceneDrawingTask.Start();
+            DrawFrameInWindow(e.Bitmap);
         }
-
-        private void RunGameEngine()
+        private void StartGameEngineButton_Click(object sender, EventArgs e)
         {
-            while (true)
-            {
-                RunEventLoopCycle();
-            }
+            GameEngine.StartGameEngine();
         }
-
-        private void RunEventLoopCycle()
-        {
-            Bitmap DrawArea = new Bitmap(CanvasPictureBox.Size.Width, CanvasPictureBox.Size.Height);
-            using (var g = Graphics.FromImage(DrawArea))
-            {
-                g.Clear(Color.Black);
-                foreach (var sceneObject in SceneObjects)
-                {
-                    g.DrawImage(sceneObject.Bitmap, sceneObject.Location.X, sceneObject.Location.Y);
-                }
-                DrawFrameInWindow(DrawArea);
-            }
-        }
-
         private void DrawFrameInWindow(Image image)
         {
+            if (!GameEngine.IsRunning)
+                return;
+
             if (InvokeRequired)
             {
                 Invoke(new RefreshFrameDelegate(SetPictureBoxImage), image);
@@ -60,35 +44,21 @@ namespace SimpleVideoGame.GamePresenter
                 SetPictureBoxImage(image);
             }
         }
-
         private void SetPictureBoxImage(Image image)
         {
+            if (!GameEngine.IsRunning)
+                return;
             CanvasPictureBox.Image = image;
         }
 
-        private Bitmap GetSquare(int size, Color color)
+        protected override void Dispose(bool disposing)
         {
-            Bitmap bitmap = new Bitmap(100, 100);
-            for (int x = 0; x < size; x++)
+            GameEngine.Dispose();
+            if (disposing && (components != null))
             {
-                for (int y = 0; y < size; y++)
-                {
-                    bitmap.TrySetPixel(x, y, color);
-                }
+                components.Dispose();
             }
-            return bitmap;
-        }
-
-        private void StartGameEngineButton_Click(object sender, EventArgs e)
-        {
-            StartGameEngine();
-        }
-
-        private void InitScene()
-        {
-            SceneObjects.Add(new SceneObject { Location = new Point(100, 100), Bitmap = GetSquare(100, Color.Red) });
-            SceneObjects.Add(new SceneObject { Location = new Point(200, 200), Bitmap = GetSquare(100, Color.Green) });
-            SceneObjects.Add(new SceneObject { Location = new Point(300, 300), Bitmap = GetSquare(100, Color.Blue) });
+            base.Dispose(disposing);
         }
     }
 }

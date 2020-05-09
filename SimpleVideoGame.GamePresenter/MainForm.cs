@@ -8,6 +8,10 @@ namespace SimpleVideoGame.GamePresenter
 {
     public partial class MainForm : Form
     {
+        private DateTime LastFrameDateTime = DateTime.Now;
+        private double minFps = int.MaxValue;
+        private double maxFps = int.MinValue;
+
         private GameEngine GameEngine;
 
         public MainForm()
@@ -49,6 +53,22 @@ namespace SimpleVideoGame.GamePresenter
             if (!GameEngine.IsRunning)
                 return;
             CanvasPictureBox.Image = image;
+            UpdateFPSLabel();
+        }
+
+        private void UpdateFPSLabel()
+        {
+            var fps = Math.Round(1000 / (DateTime.Now - LastFrameDateTime).TotalMilliseconds, 4);
+            LastFrameDateTime = DateTime.Now;
+
+            if (fps > maxFps)
+                maxFps = fps;
+            if (fps < minFps)
+                minFps = fps;
+
+            FPSLabel.Text = $"fps: {fps}";
+            MinFPSLabel.Text = $"Min fps: {minFps}";
+            MaxFPSLabel.Text = $"Max fps: {maxFps}";
         }
 
         protected override void Dispose(bool disposing)

@@ -52,6 +52,7 @@
     <Compile Include="CircleMovementObject.cs" />
     <Compile Include="DrawFrameEventArgs.cs" />
     <Compile Include="GameEngine.cs" />
+    <Compile Include="Input.cs" />
     <Compile Include="LinearMovementObject.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

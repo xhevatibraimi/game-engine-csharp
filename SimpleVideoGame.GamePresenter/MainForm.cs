@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Input;
 
 namespace SimpleVideoGame.GamePresenter
 {
@@ -27,14 +24,34 @@ namespace SimpleVideoGame.GamePresenter
             GameEngine.OnDrawFrame += DrawFrame;
         }
 
+        private void SetKeyDown(object sender, KeyEventArgs e)
+        {
+            Input.SetKeyDown(e.KeyCode.ToString(), true);
+        }
+
+        private void SetKeyUp(object sender, KeyEventArgs e)
+        {
+            Input.SetKeyDown(e.KeyCode.ToString(), false);
+        }
+
         private void DrawFrame(object sender, DrawFrameEventArgs e)
         {
             DrawFrameInWindow(e.Bitmap);
         }
         private void StartGameEngineButton_Click(object sender, EventArgs e)
         {
+            StartInputScanning();
             GameEngine.StartGameEngine();
         }
+
+        private void StartInputScanning()
+        {
+            BringToFront();
+            KeyPreview = true;
+            KeyDown += SetKeyDown;
+            KeyUp += SetKeyUp;
+        }
+
         private void DrawFrameInWindow(Image image)
         {
             if (!GameEngine.IsRunning)

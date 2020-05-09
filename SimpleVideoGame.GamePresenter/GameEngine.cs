@@ -92,32 +92,38 @@ namespace SimpleVideoGame.GamePresenter
             player.Transform.Position = new Vector2D(300, 300);
             player.Transform.Scale = new Vector2D(75, 75);
 
-            var redSquare = new LinearMovementObject();
-            redSquare.Transform.Position = new Vector2D(100, 100);
-            redSquare.Transform.Scale = new Vector2D(100, 100);
-            redSquare.Bitmap = GetSquare(100, Color.Red);
+            var policeOfficer = new PoliceOfficerObject();
+            policeOfficer.Bitmap = new Bitmap(Image.FromFile("Assets/police-officer.png"));
+            policeOfficer.Transform.Position = new Vector2D(1000, 400);
+            policeOfficer.Transform.Scale = new Vector2D(75, 75);
 
-            var greenSquare = new LinearMovementObject();
-            greenSquare.Transform.Position = new Vector2D(150, 150);
-            greenSquare.Transform.Scale = new Vector2D(100, 100);
-            greenSquare.Bitmap = GetSquare(100, Color.Green);
+            //var redSquare = new LinearMovementObject();
+            //redSquare.Transform.Position = new Vector2D(100, 100);
+            //redSquare.Transform.Scale = new Vector2D(100, 100);
+            //redSquare.Bitmap = GetSquare(100, Color.Red);
 
-            var blueSquare = new LinearMovementObject();
-            blueSquare.Transform.Position = new Vector2D(200, 200);
-            blueSquare.Transform.Scale = new Vector2D(100, 100);
-            blueSquare.Bitmap = GetSquare(100, Color.Blue);
+            //var greenSquare = new LinearMovementObject();
+            //greenSquare.Transform.Position = new Vector2D(150, 150);
+            //greenSquare.Transform.Scale = new Vector2D(100, 100);
+            //greenSquare.Bitmap = GetSquare(100, Color.Green);
 
-            var circleTrajectorySquare = new CircleMovementObject();
-            circleTrajectorySquare.Transform.Position = new Vector2D(200, 200);
-            circleTrajectorySquare.Transform.Scale = new Vector2D(100, 100);
-            circleTrajectorySquare.Bitmap = GetSquare(100, Color.Yellow);
+            //var blueSquare = new LinearMovementObject();
+            //blueSquare.Transform.Position = new Vector2D(200, 200);
+            //blueSquare.Transform.Scale = new Vector2D(100, 100);
+            //blueSquare.Bitmap = GetSquare(100, Color.Blue);
+
+            //var circleTrajectorySquare = new CircleMovementObject();
+            //circleTrajectorySquare.Transform.Position = new Vector2D(200, 200);
+            //circleTrajectorySquare.Transform.Scale = new Vector2D(100, 100);
+            //circleTrajectorySquare.Bitmap = GetSquare(100, Color.Yellow);
 
             SceneObjects.Add(map);
             SceneObjects.Add(player);
-            SceneObjects.Add(redSquare);
-            SceneObjects.Add(greenSquare);
-            SceneObjects.Add(blueSquare);
-            SceneObjects.Add(circleTrajectorySquare);
+            SceneObjects.Add(policeOfficer);
+            //SceneObjects.Add(redSquare);
+            //SceneObjects.Add(greenSquare);
+            //SceneObjects.Add(blueSquare);
+            //SceneObjects.Add(circleTrajectorySquare);
         }
 
         public void Dispose()

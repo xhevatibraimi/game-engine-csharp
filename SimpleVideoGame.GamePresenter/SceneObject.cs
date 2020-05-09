@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 
 namespace SimpleVideoGame.GamePresenter
 {
@@ -10,6 +11,11 @@ namespace SimpleVideoGame.GamePresenter
         public SceneObject()
         {
             Transform = new Transform2D();
+        }
+
+        public void OnEveryFrame()
+        {
+            Transform.Position = new Vector2D(Transform.Position.X + 1f, Transform.Position.Y + 0.5f);
         }
     }
 }

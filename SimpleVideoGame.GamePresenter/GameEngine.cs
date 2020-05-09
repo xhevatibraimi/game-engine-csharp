@@ -24,6 +24,8 @@ namespace SimpleVideoGame.GamePresenter
 
         private void RunEventLoopCycle()
         {
+            RunPhysicsCycle();
+
             Bitmap DrawArea = new Bitmap(ScreenWidth, ScreenHeight);
             using (var g = Graphics.FromImage(DrawArea))
             {
@@ -33,6 +35,14 @@ namespace SimpleVideoGame.GamePresenter
                     g.DrawImage(sceneObject.Bitmap, sceneObject.Transform.Position.X, sceneObject.Transform.Position.Y);
                 }
                 DrawFrame(DrawArea);
+            }
+        }
+
+        private void RunPhysicsCycle()
+        {
+            foreach (var sceneObject in SceneObjects)
+            {
+                sceneObject.OnEveryFrame();
             }
         }
 

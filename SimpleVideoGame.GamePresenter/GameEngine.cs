@@ -30,7 +30,7 @@ namespace SimpleVideoGame.GamePresenter
                 g.Clear(Color.Black);
                 foreach (var sceneObject in SceneObjects)
                 {
-                    g.DrawImage(sceneObject.Bitmap, sceneObject.Location.X, sceneObject.Location.Y);
+                    g.DrawImage(sceneObject.Bitmap, sceneObject.Transform.Position.X, sceneObject.Transform.Position.Y);
                 }
                 DrawFrame(DrawArea);
             }
@@ -74,9 +74,21 @@ namespace SimpleVideoGame.GamePresenter
 
         public void Init()
         {
-            SceneObjects.Add(new SceneObject { Location = new Point(100, 100), Bitmap = GetSquare(100, Color.Red) });
-            SceneObjects.Add(new SceneObject { Location = new Point(200, 200), Bitmap = GetSquare(100, Color.Green) });
-            SceneObjects.Add(new SceneObject { Location = new Point(300, 300), Bitmap = GetSquare(100, Color.Blue) });
+            var redSquare = new SceneObject();
+            redSquare.Transform.Position = new Vector2D(100, 100);
+            redSquare.Bitmap = GetSquare(100, Color.Red);
+
+            var greenSquare = new SceneObject();
+            greenSquare.Transform.Position = new Vector2D(150, 150);
+            greenSquare.Bitmap = GetSquare(100, Color.Green);
+
+            var blueSquare = new SceneObject();
+            blueSquare.Transform.Position = new Vector2D(200, 200);
+            blueSquare.Bitmap = GetSquare(100, Color.Blue);
+
+            SceneObjects.Add(redSquare);
+            SceneObjects.Add(greenSquare);
+            SceneObjects.Add(blueSquare);
         }
 
         public void Dispose()

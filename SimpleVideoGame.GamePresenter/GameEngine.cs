@@ -84,21 +84,26 @@ namespace SimpleVideoGame.GamePresenter
 
         public void Init()
         {
-            var redSquare = new SceneObject();
+            var redSquare = new LinearMovementObject();
             redSquare.Transform.Position = new Vector2D(100, 100);
             redSquare.Bitmap = GetSquare(100, Color.Red);
 
-            var greenSquare = new SceneObject();
+            var greenSquare = new LinearMovementObject();
             greenSquare.Transform.Position = new Vector2D(150, 150);
             greenSquare.Bitmap = GetSquare(100, Color.Green);
 
-            var blueSquare = new SceneObject();
+            var blueSquare = new LinearMovementObject();
             blueSquare.Transform.Position = new Vector2D(200, 200);
             blueSquare.Bitmap = GetSquare(100, Color.Blue);
+
+            var circleTrajectorySquare = new CircleMovementObject();
+            circleTrajectorySquare.Transform.Position = new Vector2D(200, 200);
+            circleTrajectorySquare.Bitmap = GetSquare(100, Color.Yellow);
 
             SceneObjects.Add(redSquare);
             SceneObjects.Add(greenSquare);
             SceneObjects.Add(blueSquare);
+            SceneObjects.Add(circleTrajectorySquare);
         }
 
         public void Dispose()

@@ -1,9 +1,8 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace SimpleVideoGame.GamePresenter
 {
-    public class SceneObject
+    public abstract class SceneObject
     {
         public Transform2D Transform { get; set; }
         public Bitmap Bitmap { get; set; }
@@ -13,9 +12,6 @@ namespace SimpleVideoGame.GamePresenter
             Transform = new Transform2D();
         }
 
-        public void OnEveryFrame()
-        {
-            Transform.Position = new Vector2D(Transform.Position.X + 1f, Transform.Position.Y + 0.5f);
-        }
+        public virtual void OnEveryFrame() { }
     }
 }

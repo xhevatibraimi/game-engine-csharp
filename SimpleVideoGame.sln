@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleVideoGame.GamePresenter", "SimpleVideoGame.GamePresenter\SimpleVideoGame.GamePresenter.csproj", "{66377E42-B326-460D-AB9A-C8F8AE4EAB53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleVideoGame.EventDrivenDemo", "SimpleVideoGame.EventDrivenDemo\SimpleVideoGame.EventDrivenDemo.csproj", "{76677994-76C9-4FB2-A834-F564C61D1DB6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{66377E42-B326-460D-AB9A-C8F8AE4EAB53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66377E42-B326-460D-AB9A-C8F8AE4EAB53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66377E42-B326-460D-AB9A-C8F8AE4EAB53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66377E42-B326-460D-AB9A-C8F8AE4EAB53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76677994-76C9-4FB2-A834-F564C61D1DB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76677994-76C9-4FB2-A834-F564C61D1DB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76677994-76C9-4FB2-A834-F564C61D1DB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76677994-76C9-4FB2-A834-F564C61D1DB6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C1A702BD-2283-4699-BC49-0DA0ED7A3D5D}
+	EndGlobalSection
+EndGlobal
